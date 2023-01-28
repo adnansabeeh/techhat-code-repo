@@ -1,0 +1,26 @@
+---
+
+- name: Simple playbook to install httpd package
+hosts: all
+become: yes
+become_method: sudo
+gather_facts: yes
+
+tasks:
+- name: Install httpd package
+yum: name=httpd state=latest
+
+- name: Copy index.html file
+copy: src=/tmp/index.html dest=/var/www/html/ backup=yes
+
+- name: restart httpd service
+service: name=httpd state=started
+
+- name: Using the debug module
+debug: msg="This is a apache httpd playbook"
+
+Took out the comment
+adding some more comments
+Adding addititonal comments for testing
+
+
